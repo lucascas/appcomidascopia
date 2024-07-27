@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planificador de Comidas Semanal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title is-1 has-text-centered">Planificador de Comidas Semanal</h1>
+        <form id="mealPlanForm">
+            <div class="columns is-multiline is-centered">
+                <div class="column is-half" id="weekdays">
+                    <!-- Los días de la semana se generarán dinámicamente con JavaScript -->
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Comprar en el super:</label>
+                <div class="control">
+                    <textarea class="textarea" name="comprar_super" rows="4"></textarea>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button type="submit" class="button is-primary is-fullwidth">Enviar planificación</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="comidasContainer">
+        <h2 class="title is-2 has-text-centered">Comidas de Planes Anteriores</h2>
+        
+        <div class="categories-tree">
+          <button class="button is-primary category-button" data-category="Carnes">Carnes</button>
+          <button class="button is-primary category-button" data-category="Pollo">Pollo</button>
+          <button class="button is-primary category-button" data-category="Pescado">Pescado</button>
+          <button class="button is-primary category-button" data-category="Pastas">Pastas</button>
+        </div>
+        
+        <div id="comidasList" class="columns is-multiline">
+            <!-- Las comidas se cargarán aquí dinámicamente -->
+        </div>
+    </div>
+
+    <div id="popupOverlay" class="popup-overlay">
+        <div class="popup-content">
+            <h3>Agregar a:</h3>
+            <form id="addToMenuForm">
+                <div>
+                    <input type="radio" id="lunes_almuerzo" name="menuSlot" value="lunes_almuerzo">
+                    <label for="lunes_almuerzo">Lunes Almuerzo</label>
+                </div>
+                <div>
+                    <input type="radio" id="lunes_cena" name="menuSlot" value="lunes_cena">
+                    <label for="lunes_cena">Lunes Cena</label>
+                </div>
+                <div>
+                    <input type="radio" id="martes_almuerzo" name="menuSlot" value="martes_almuerzo">
+                    <label for="martes_almuerzo">Martes Almuerzo</label>
+                </div>
+                <div>
+                    <input type="radio" id="martes_cena" name="menuSlot" value="martes_cena">
+                    <label for="martes_cena">Martes Cena</label>
+                </div>
+                <div>
+                    <input type="radio" id="miercoles_almuerzo" name="menuSlot" value="miercoles_almuerzo">
+                    <label for="miercoles_almuerzo">Miércoles Almuerzo</label>
+                </div>
+                <div>
+                    <input type="radio" id="miercoles_cena" name="menuSlot" value="miercoles_cena">
+                    <label for="miercoles_cena">Miércoles Cena</label>
+                </div>
+                <div>
+                    <input type="radio" id="jueves_almuerzo" name="menuSlot" value="jueves_almuerzo">
+                    <label for="jueves_almuerzo">Jueves Almuerzo</label>
+                </div>
+                <div>
+                    <input type="radio" id="jueves_cena" name="menuSlot" value="jueves_cena">
+                    <label for="jueves_cena">Jueves Cena</label>
+                </div>
+                <div>
+                    <input type="radio" id="viernes_almuerzo" name="menuSlot" value="viernes_almuerzo">
+                    <label for="viernes_almuerzo">Viernes Almuerzo</label>
+                </div>
+                <div>
+                    <input type="radio" id="viernes_cena" name="menuSlot" value="viernes_cena">
+                    <label for="viernes_cena">Viernes Cena</label>
+                </div>
+                <button type="submit" class="button is-primary">Agregar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Popup para editar categoría -->
+    <div id="categoryPopup" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+          <div class="box">
+              <h3 class="title is-4">Editar Categoría</h3>
+              <div>
+                  <label><input type="checkbox" class="category-select" value="Carnes"> Carnes</label><br>
+                  <label><input type="checkbox" class="category-select" value="Pollo"> Pollo</label><br>
+                  <label><input type="checkbox" class="category-select" value="Pescado"> Pescado</label><br>
+                  <label><input type="checkbox" class="category-select" value="Pastas"> Pastas</label>
+              </div>
+              <button id="saveCategoryButton" class="button is-primary">Guardar</button>
+          </div>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+    <script src="errorLog.js"></script>
+</body>
+</html>
