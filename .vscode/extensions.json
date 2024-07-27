@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "humy2833.ftp-simple",
-        "natizyskunk.sftp"
+        "natizyskunk.sftp",
+        "ms-vscode.remote-explorer"
     ]
 }
